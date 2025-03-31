@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Jewelry</title>
+    <style>
+        body {
+            background-color: #f5f0e8;
+            color: #3e3e3e;
+            font-family: 'Georgia', serif;
+            padding: 20px;
+            margin: 0;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            background-color: #e8d8c0;
+            border-radius: 10px;
+        }
+        .cart-summary {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.1em;
+            z-index: 100;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: white;
+            width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border: 1px solid #e0d6cc;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .product-title {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #5a4a42;
+        }
+        .product-description {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 0.95em;
+            color: #6e6e6e;
+        }
+        .product-price {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #a67c52;
+        }
+        .add-to-cart {
+            background: #a67c52;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .add-to-cart:hover {
+            background: #8b5e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-summary">
+        🛒 <span id="cart-count">0</span> items | ₹<span id="cart-total">0</span>
+    </div>
+
+    <div class="header">
+        <h1>Luxe Jewelry</h1>
+        <p>Timeless elegance for every occasion</p>
+    </div>
+
+    <div class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://www.giva.co/cdn/shop/files/PD0115_5.jpg?v=1742392521" alt="Diamond Necklace">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Diamond Solitaire Necklace</h3>
+                <p class="product-description">18K white gold with 0.5ct brilliant cut diamond</p>
+                <p class="product-price">₹85,000</p>
+                <button class="add-to-cart" onclick="addToCart('Diamond Necklace', 85000)">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://assets.ajio.com/medias/sys_master/root/20230522/NFGd/646b71fcd55b7d0c63cc7709/-473Wx593H-466175272-gold-MODEL.jpg" alt="Pearl Earrings">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Pearl Drop Earrings</h3>
+                <p class="product-description">South sea pearls with diamond accents in 14K gold</p>
+                <p class="product-price">₹45,000</p>
+                <button class="add-to-cart" onclick="addToCart('Pearl Earrings', 45000)">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://everstylish.com/media/catalog/product/cache/fc1e90810f81d5d5f869fad087b9d639/j/e/jew1103549-m1.jpg" alt="Gold Bracelet">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Gold Chain Bracelet</h3>
+                <p class="product-description">22K yellow gold with secure lobster clasp</p>
+                <p class="product-price">₹62,000</p>
+                <button class="add-to-cart" onclick="addToCart('Gold Bracelet', 62000)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cartItems = 0;
+        let cartTotal = 0;
+        
+        function addToCart(productName, price) {
+            cartItems++;
+            cartTotal += price;
+            
+            document.getElementById('cart-count').textContent = cartItems;
+            document.getElementById('cart-total').textContent = cartTotal.toLocaleString('en-IN');
+            
+            alert(`${productName} added to cart!\nTotal: ₹${cartTotal.toLocaleString('en-IN')}`);
+        }
+    </script>
+</body>
+</html>
